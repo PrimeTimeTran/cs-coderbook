@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Col,
   Form,
@@ -51,6 +51,8 @@ const Avatar = (props) => {
 
 /* STEP 4 */
 const CommentForm = () => {
+  const [comment, setComment] = useState('')
+
   return (
     <Form>
       <Form.Row>
@@ -60,6 +62,7 @@ const CommentForm = () => {
             type="text"
             placeholder="Write a comment..."
             className="border-0 rounded-md bg-light"
+            onChange={(e) => setComment(e.target.value)}
           />
         </Col>
       </Form.Row>
