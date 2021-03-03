@@ -14,9 +14,6 @@ commentsController.create = catchAsync(async (req, res) => {
     body: req.body.body,
     post: req.body.postId,
   });
-
-  // const post = await Post.find({id_: comment.post})
-  // post.comments.push
   res.json(comment);
 });
 
@@ -59,7 +56,6 @@ commentsController.destroy = async (req, res) => {
 
 commentsController.list = async (req, res) => {
   await Comment.find({}, (err, comments) => {
-    console.log({ comments });
     if (!comments) {
       res.status(404).json({ message: "Comment not Found" });
     } else {

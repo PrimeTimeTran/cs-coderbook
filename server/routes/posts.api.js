@@ -6,6 +6,7 @@ const postsController = require("../controllers/posts.controller");
 
 router.get("/", postsController.list);
 router.post("/", authMiddleware.loginRequired, postsController.create);
+router.post("/:id/comments", authMiddleware.loginRequired, postsController.createComment);
 router.get("/:id", postsController.read);
 router.put("/:id", postsController.update);
 router.delete("/:id", postsController.destroy);

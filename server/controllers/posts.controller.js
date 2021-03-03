@@ -1,4 +1,5 @@
 const Post = require("../models/Post");
+const Comment = require("../models/Comment");
 
 const {
   AppError,
@@ -51,8 +52,25 @@ postController.destroy = async (req, res) => {
 };
 
 postController.list = async (req, res) => {
-const posts = await Post.find({}).populate("owner");
-return sendResponse(res, 200, true, { posts }, null, "Login successful");
+  const posts = await Post.find({}).populate("owner");
+  return sendResponse(res, 200, true, { posts }, null, "Login successful");
+};
+
+postController.createComment = async (req, res) => {
+  const comment = await Comment.create({
+    ...req.body,
+    owner: req.userId,
+    post: req.params.id,
+  });
+
+  const post = await Post.findById(req.params.id);
+  post.comments.push(comment._id);
+
+  await post.save();
+  await post.populate("comments");
+  await post.execPopulate();
+
+  return sendResponse(res, 200, true, { post }, null, "Comment created!");
 };
 
 module.exports = postController;
