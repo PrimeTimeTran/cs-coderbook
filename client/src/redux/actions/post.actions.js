@@ -129,8 +129,8 @@ const deletePost = (postId) => async (dispatch) => {
 const createPostReaction = (targetType, targetId, emoji) => async (dispatch) => {
   dispatch({ type: types.SEND_REACTION_REQUEST, payload: null });
   try {
-    const res = await api.post(`/reactions`, { targetType, targetId, emoji });
-    if (targetType === "Blog") {
+    const res = await api.post(`/reactions`,{ targetType, targetId, emoji });
+    if (targetType === "Post") {
       dispatch({
         payload: res.data.data,
         type: types.POST_REACTION_SUCCESS,

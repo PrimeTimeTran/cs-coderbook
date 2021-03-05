@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./style.css";
 
-import { commentActions } from "../../redux/actions";
+import { commentActions, postActions } from "../../redux/actions";
 
 const COMMENTS = [
   {
@@ -111,9 +111,19 @@ const POST_ACTIONS = [
   { title: "Share", icon: "share" },
 ];
 
-const PostActionButton = ({ title, icon }) => {
+const PostActionButton = ({ title, icon, postId }) => {
+  const dispatch = useDispatch();
+
+  const onReact = (name) => {
+    if (name === 'Like') {
+      dispatch(postActions.createPostReaction("Post", postId, 'like'));
+    }
+  }
   return (
-    <Button className="bg-light bg-white text-dark border-0">
+    <Button
+      onClick={() => onReact(title)}
+      className="bg-light bg-white text-dark border-0"
+    >
       {" "}
       <FontAwesomeIcon
         size="lg"
@@ -126,20 +136,22 @@ const PostActionButton = ({ title, icon }) => {
   );
 };
 
-const PostActions = () => {
+const PostActions = (props) => {
   return (
     <ButtonGroup aria-label="Basic example">
       {POST_ACTIONS.map((a) => {
-        return <PostActionButton key={a.title} {...a} />;
+        return <PostActionButton postId={props.postId} key={a.title} {...a} />;
       })}
     </ButtonGroup>
   );
 };
 
-const PostReactions = () => {
+const PostReactions = (props) => {
   return (
     <div className="d-flex justify-content-between my-2 mx-3">
-      <p className="mb-0">Vinh Nguyen, Bitna Kim and 21 others</p>
+      <p className="mb-0">
+        Vinh Duong, Bitna Kim and {props.reactionsCount} others
+      </p>
       <p className="mb-0">20 comments</p>
     </div>
   );
@@ -149,7 +161,7 @@ function PostHeader(props) {
   return (
     <div className="d-flex align-items-center p-3">
       <Avatar url="https://scontent.fsgn5-6.fna.fbcdn.net/v/t1.0-1/p480x480/13924881_10105599279810183_392497317459780337_n.jpg?_nc_cat=109&ccb=3&_nc_sid=7206a8&_nc_ohc=uI6aGTdf9vEAX8-Aev9&_nc_ht=scontent.fsgn5-6.fna&tp=6&oh=e8b18753cb8aa63937829afe3aa916a7&oe=6064C685" />
-      <h3 className="font-weight-bold ml-3">{props.user.name}</h3>
+      <h3 className="font-weight-bold ml-3">{props.user && props.user.name}</h3>
     </div>
   );
 }
@@ -163,9 +175,9 @@ export default function Post(props) {
         variant="top"
         src="https://images.unsplash.com/photo-1529231812519-f0dcfdf0445f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8dGFsZW50ZWR8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
       />
-      <PostReactions />
+      <PostReactions reactionsCount={props.reactions.length} />
       <hr className="my-1" />
-      <PostActions />
+      <PostActions postId={props._id} />
       <hr className="mt-1" />
       <PostComments comments={COMMENTS} />
       <CommentForm postId={props._id} />
