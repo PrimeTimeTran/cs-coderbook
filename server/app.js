@@ -8,8 +8,6 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const MONGODB_URI = process.env.MONGODB_URI;
 
-var indexRouter = require('./routes/index');
-
 var app = express();
 
 app.use(logger('dev'));
@@ -33,6 +31,42 @@ mongoose
     console.log({ e });
   });
 
-app.use('/api', indexRouter);
+/* Initialize Routes */
+var indexRouter = require("./routes/index");
+app.use("/api", indexRouter);
+
+// catch 404 and forard to error handler
+app.use((req, res, next) => {
+  const err = new Error("Not Found");
+  err.statusCode = 404;
+  next(err);
+});
+
+
+const utilsHelper = require('./helpers/utils.helper')
+
+/* Initialize Error Handling */
+app.use((err, req, res, next) => {
+  console.log("ERROR", err);
+  if (err.isOperational) {
+    return utilsHelper.sendResponse(
+      res,
+      err.statusCode ? err.statusCode : 500,
+      false,
+      null,
+      { message: err.message },
+      err.errorType
+    );
+  } else {
+    return utilsHelper.sendResponse(
+      res,
+      err.statusCode ? err.statusCode : 500,
+      false,
+      null,
+      { message: err.message },
+      "Internal Server Error"
+    );
+  }
+});
 
 module.exports = app;
