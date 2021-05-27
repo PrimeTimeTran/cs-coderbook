@@ -19,8 +19,8 @@ const PublicLayout = () => {
         <AlertMsg />
         <Switch>
           <Route exact path="/" component={HomePage} />
+          <Route exact path="/login" component={AuthPage} />
           <Route exact path="/:id" component={ProfilePage} />
-          <Route exact path="/auth" component={AuthPage} />
           <PrivateRoute exact path="/:id" component={ProfilePage} />
           <Route component={NotFoundPage} />
         </Switch>

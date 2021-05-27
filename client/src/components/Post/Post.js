@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import {
   Col,
@@ -55,12 +55,12 @@ const Avatar = (props) => {
 /* STEP 4 */
 const CommentForm = (props) => {
   const dispatch = useDispatch();
-  const [comment, setComment] = useState('')
+  const [comment, setComment] = useState("");
 
   const onSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     dispatch(commentActions.createComment(props.postId, comment));
-  }
+  };
 
   return (
     <Form onSubmit={onSubmit}>
@@ -111,28 +111,38 @@ const POST_ACTIONS = [
   { title: "Share", icon: "share" },
 ];
 
+const ReactionTypesPanel = () => {
+  return <div className="reaction-panel">
+    Hodfodododo
+  </div>;
+};
+
 const PostActionButton = ({ title, icon, postId }) => {
   const dispatch = useDispatch();
+  const [showReactions, setShowReactions] = useState(false);
 
   const onReact = (name) => {
-    if (name === 'Like') {
-      dispatch(postActions.createPostReaction("Post", postId, 'like'));
+    if (name === "Like") {
+      setShowReactions(!showReactions);
     }
-  }
+  };
+
   return (
-    <Button
-      onClick={() => onReact(title)}
-      className="bg-light bg-white text-dark border-0"
-    >
-      {" "}
-      <FontAwesomeIcon
-        size="lg"
-        icon={icon}
-        color="black"
-        className="mr-2 action-icon"
-      />
-      {title}
-    </Button>
+    <>
+      {showReactions && <ReactionTypesPanel />}{" "}
+      <Button
+        onClick={() => onReact(title)}
+        className="bg-light bg-white text-dark border-0"
+      >
+        <FontAwesomeIcon
+          size="lg"
+          icon={icon}
+          color="black"
+          className="mr-2 action-icon"
+        />
+        {title}
+      </Button>
+    </>
   );
 };
 

@@ -16,10 +16,22 @@
   overflow: hidden;
   border-radius: 1rem;
   display: inline-block;
-	-webkit-border-radius: 1rem;
+  -webkit-border-radius: 1rem;
   background-color: var(--bg-primary);
 }
 
 .comment-bubble > p {
   margin-bottom: 0rem;
+}
+
+.reaction-panel {
+  top: -2rem;
+  width: 20rem;
+  height: 3rem;
+  z-index: 100;
+  padding: 1rem;
+  border-radius: 1rem;
+  position: absolute;
+  border: 1px solid red;
+  background-color: white;
 }
