@@ -3,12 +3,12 @@ import { Container } from "react-bootstrap";
 import { Switch, Route } from "react-router-dom";
 
 import AlertMsg from "./AlertMsg";
-import PublicNavbar from "../../components/PublicNavbar";
 import PrivateRoute from '../PrivateRoute'
+import PublicNavbar from "../../components/PublicNavbar";
 
 import HomePage from "../../pages/HomePage";
-import ProfilePage from "../../pages/ProfilePage";
 import AuthPage from "../../pages/AuthPage";
+import ProfilePage from "../../pages/ProfilePage";
 import NotFoundPage from "../../pages/NotFoundPage";
 
 const PublicLayout = () => {
