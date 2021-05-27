@@ -12,6 +12,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./style.css";
 
+import avatar from "../../assets/avatar.png";
+
 const COMMENTS = [
   {
     id: 1,
@@ -46,7 +48,7 @@ const COMMENTS = [
 ];
 
 const Avatar = (props) => {
-  return <img alt="profile" className="rounded-circle" src={props.url} />;
+  return <img alt="profile" className="rounded-circle" src={avatar} />;
 };
 
 /* STEP 4 */
