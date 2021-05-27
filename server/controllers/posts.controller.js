@@ -52,7 +52,14 @@ postController.destroy = async (req, res) => {
 };
 
 postController.list = async (req, res) => {
-  const posts = await Post.find({}).populate("reactions").populate("owner")
+  const posts = await Post.find({})
+    .populate("owner")
+    .populate({
+      path: "reactions",
+      populate: {
+        path: "owner",
+      },
+    });
 
   return sendResponse(res, 200, true, { posts }, null, "Login successful");
 };
