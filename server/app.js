@@ -32,7 +32,7 @@ mongoose
   });
 
 /* Initialize Routes */
-var indexRouter = require("./routes/index");
+var indexRouter = require("./api/index");
 app.use("/api", indexRouter);
 
 // catch 404 and forard to error handler
