@@ -35,10 +35,8 @@ mongoose
     console.log({ e });
   });
 
-/* Initialize Routes */
 app.use("/api", indexRouter);
 
-// catch 404 and forard to error handler
 app.use((req, res, next) => {
   const err = new Error("Not Found");
   err.statusCode = 404;

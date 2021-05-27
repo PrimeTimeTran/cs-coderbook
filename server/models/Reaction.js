@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const reactionSchema = Schema(
   {
 
-    enum: ["Like", "Heart", "Care", "Laugh", "Angry", "Sad"],
+    type: ["Like", "Heart", "Care", "Laugh", "Angry", "Sad"],
     owner: {
       ref: "User",
       required: true,

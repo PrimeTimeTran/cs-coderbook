@@ -11,7 +11,7 @@ const reactionController = {};
 
 reactionController.create = catchAsync(async (req, res) => {
   const reaction = await Reaction.create({
-    enum: "Like",
+    type: "Like",
     owner: req.userId,
     post: req.body.targetId,
   });
