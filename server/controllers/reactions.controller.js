@@ -19,11 +19,11 @@ reactionController.create = catchAsync(async (req, res) => {
   });
 
 
-  const la = await mongoose.model('Post').find({}).exec()
-
-  console.log({la})
-
-  const post = await Post.findById(req.body.reactionableId);
+  const post = await mongoose
+    .model("Post")
+    .findById(req.body.reactionableId)
+    .exec();
+  // const post = await Post.findById(req.body.reactionableId);
 
   post.reactions.push(reaction._id);
 
