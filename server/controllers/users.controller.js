@@ -59,7 +59,6 @@ userController.update = async (req, res) => {
 
 userController.destroy = async (req, res) => {
   await User.findByIdAndDelete(req.params.id, (err, user) => {
-    console.log({ err, user });
     if (!user) {
       res.status(404).json({ message: "User not Found" });
     } else {
