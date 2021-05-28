@@ -4,9 +4,9 @@ const Schema = mongoose.Schema;
 
 const postSchema = Schema(
   {
-    comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
-    reactions: { type: Array },
     body: { type: String, unique: false, default: "" },
+    comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
+    reactions: [{ type: Schema.Types.ObjectId, ref: "Reaction" }],
     owner: {
       ref: "User",
       required: true,
