@@ -59,16 +59,22 @@ postController.list = async (req, res) => {
       populate: {
         path: "owner",
       },
+    })
+    .populate({
+      path: "comments",
+      populate: {
+        path: "owner",
+      },
     });
 
-  return sendResponse(res, 200, true, { posts }, null, "Login successful");
+  return sendResponse(res, 200, true, { posts }, null, "Your posts");
 };
 
 postController.createComment = async (req, res) => {
   const comment = await Comment.create({
     ...req.body,
     owner: req.userId,
-    post: req.params.id,
+    postId: req.params.id,
   });
 
   const post = await Post.findById(req.params.id);

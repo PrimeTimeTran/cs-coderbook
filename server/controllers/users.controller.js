@@ -40,6 +40,14 @@ userController.read = async (req, res) => {
     res.json(user);
   }
 };
+userController.all = async (req, res) => {
+  const users = await User.find({});
+  if (!users) {
+    res.status(404).json({ message: "User not Found" });
+  } else {
+    res.json(users);
+  }
+};
 
 userController.update = async (req, res) => {
   await User.findByIdAndUpdate(

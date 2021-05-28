@@ -1,22 +1,30 @@
+
+const mongoose = require("mongoose");
 const Post = require("../models/Post");
 const Reaction = require("../models/Reaction");
 
 const {
-  AppError,
   catchAsync,
-  sendResponse,
 } = require("../helpers/utils.helper");
 
 const reactionController = {};
 
 reactionController.create = catchAsync(async (req, res) => {
   const reaction = await Reaction.create({
-    type: "Like",
     owner: req.userId,
-    post: req.body.targetId,
+    type: req.body.type,
+    post: req.body.reactionableId,
+    reactionableId: req.body.reactionableId,
+    reactionableType: req.body.reactionableType,
   });
 
-  const post = await Post.findById(req.body.targetId);
+
+  const la = await mongoose.model('Post').find({}).exec()
+
+  console.log({la})
+
+  const post = await Post.findById(req.body.reactionableId);
+
   post.reactions.push(reaction._id);
 
   await post.save();

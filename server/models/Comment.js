@@ -5,7 +5,7 @@ const commentSchema = Schema(
   {
     reactions: { type: Array },
     body: { type: String, unique: false, default: "" },
-    post: { ref: "Post", required: true, type: Schema.Types.ObjectId },
+    postId: { ref: "Post", required: true, type: Schema.Types.ObjectId },
     owner: {
       ref: "User",
       required: true,
