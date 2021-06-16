@@ -45,6 +45,7 @@ const SidebarButton = ({ title, icon }) => {
 
 /* STEP 3 */
 export default function HomePage() {
+  console.log({ foo: "HomePage" });
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   
   useEffect(() => {
