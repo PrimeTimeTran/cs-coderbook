@@ -42,8 +42,7 @@ userController.read = async (req, res) => {
 };
 
 userController.list = async (req, res) => {
-  // const users = await User.findOne({});
-  const users = ['Hi']
+  const users = await User.findOne({});
   if (!users) {
     res.status(404).json({ message: "Users not Found" });
   } else {
