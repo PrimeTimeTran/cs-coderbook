@@ -26,17 +26,19 @@ The flow of data will be like the following when users are requesting data from 
 #### User
 
 - As a user I can register an account.
-- As a user I can see my account information on my profile page.
-- As a user I update my account.
-- As a user I can delete my account.
+- As a user I can sign in after registering an account.
+- As a user I'm redirected to a homepage after I've signed in.
+- As a user I can see my account's profile on a profile page.
+- As a user I update my profile on my profile page.
 
 #### Post
 
-- As a user I can create a post.
-- As a user I can view all posts on the homepage.
-- As a user I can view all my posts on my profile.
-- As a user I can update my own posts.
-- As a user I can delete my own posts.
+- As a user I can create a post from my homepage.
+- As a user I can view all my friends and I's post on the homepage.
+- As a user I can create a post from my profile page.
+- As a user I can view all my posts and the posts I've shared on my profile page.
+- As a user I can update posts I've written/shared.
+- As a user I can delete posts I've written/shared.
 
 #### Comment
 

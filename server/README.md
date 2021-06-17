@@ -1,6 +1,6 @@
 # Coderbook Client/Web
 
-This client is for end users.
+This server will hold the logic for our backend. It will encapsulate api endpoints which allow users to manipulate resources on our server.
 
 ### Client/Web > Server/API
 

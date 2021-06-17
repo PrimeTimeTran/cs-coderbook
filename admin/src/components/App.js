@@ -1,14 +1,11 @@
 import React from "react";
 import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
 
-// components
 import Layout from "./Layout";
 
-// pages
 import Error from "../pages/error";
 import Login from "../pages/login";
 
-// context
 import { useUserState } from "../context/UserContext";
 
 export default function App() {
@@ -30,8 +27,6 @@ export default function App() {
       </Switch>
     </HashRouter>
   );
-
-  // #######################################################################
 
   function PrivateRoute({ component, ...rest }) {
     return (

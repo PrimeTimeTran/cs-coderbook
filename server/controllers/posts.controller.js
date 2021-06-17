@@ -10,10 +10,9 @@ const {
 const postController = {};
 
 postController.create = catchAsync(async (req, res) => {
-  console.log({ foo: req.body });
   const post = await Post.create({ owner: req.userId, ...req.body });
   if (req.body.imageURLS) {
-    for (let imageUrl of req.body.imageURLS) {
+    for (let imageUrl of req.body.imageURLS) { 
       const newImage = await Image.create({ postId: post.id, owner: req.userId});
       await newImage.save()
       post.images.push(newImage._id)

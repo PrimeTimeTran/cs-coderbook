@@ -19,8 +19,6 @@ const ComposerButton = ({ title, icon, widget }) => {
     );
 };
 
-
-
 export default function Composer() {
   const [imageUrl, setImageUrl] = useState('')
   const [images, setImages] = useState([])
@@ -39,9 +37,7 @@ export default function Composer() {
     },
   );
 
-
   const onChangeImage = (e) => {
-    console.log({ foo: e.target.files[0] });
     setImages([...images, e.target.files[0]]);
   }
 
@@ -63,9 +59,6 @@ export default function Composer() {
       body: JSON.stringify(form),
     });
   }
-
-
-
 
   return (
     <Card className="mb-3 w-100 shadow composer-card">

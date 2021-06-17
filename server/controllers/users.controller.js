@@ -1,12 +1,14 @@
 const bcrypt = require("bcryptjs");
+
+const userController = {};
+
+const User = require("../models/User");
+
 const {
   AppError,
   catchAsync,
   sendResponse,
 } = require("../helpers/utils.helper");
-const User = require("../models/User");
-
-const userController = {};
 
 userController.create = catchAsync(async (req, res, next) => {
   let { email, password } = req.body;
@@ -28,9 +30,9 @@ userController.create = catchAsync(async (req, res, next) => {
     true,
     { user, accessToken },
     null,
-    "Create user successful"
+    "Create user successful",
   );
-})
+});
 
 userController.read = async (req, res) => {
   const user = await User.findOne({ _id: req.params.id });
@@ -62,7 +64,7 @@ userController.update = async (req, res) => {
       } else {
         res.json(user);
       }
-    }
+    },
   );
 };
 

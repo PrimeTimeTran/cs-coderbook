@@ -8,7 +8,6 @@ const loginRequest = (email, password) => async (dispatch) => {
     const res = await api.post("/auth/login", { email, password });
     const name = res.data.data.user.name;
     dispatch({ type: types.LOGIN_SUCCESS, payload: res.data.data });
-    toast.success(`Welcome ${name}`);
     api.defaults.headers.common["authorization"] =
       "Bearer " + res.data.data.accessToken;
 

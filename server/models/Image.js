@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const imageSchema = Schema(
   {
-    postId: Schema.Types.ObjectId,
     url: Schema.Types.String,
+    postId: Schema.Types.ObjectId,
     owner: {
       ref: "User",
       required: true,
