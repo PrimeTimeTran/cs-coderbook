@@ -2,23 +2,24 @@
 
 ## Objectives
 
-To test your abilities in full stack web development using the M.E.R.N. stack.
+An example full stack web application.
 
-In full stack development it's help to contemplate the flow of data.
-
-The flow of full stack will always be from `Client > Server` then `Server > Client`.
+- React
+- Node
+- Netlify
+- Heroku
 
 ### Web/Admin > Server/API
 
-At a high level, when users are inserting data into our database, the flow will be like the following.
+The flow of data will be like the following when users are inserting data into our database.
 
-`Input > Handler > Submit Handler > Action > API > Controller > Handler > Database`
+`Input > Handler > Submit Handler > Action > REST API > Request > Controller > Handler > Database`
 
 ### Server/API > Web/Admin
 
-At a high level, when our user is requesting data the flow of the data wil lbe like so.
+The flow of data will be like the following when users are requesting data from our database.
 
-`Database > Handler > Controller > REST response > Action > Reducer > Component > User Interface`
+`Database > Handler > Controller > REST API > Response >Action > Reducer > Component > User Interface`
 
 ### Requirements
 
@@ -27,7 +28,7 @@ At a high level, when our user is requesting data the flow of the data wil lbe l
 - As a user I can register an account.
 - As a user I can see my account information on my profile page.
 - As a user I update my account.
-- As a user I can delete my account
+- As a user I can delete my account.
 
 #### Post
 
@@ -47,7 +48,7 @@ At a high level, when our user is requesting data the flow of the data wil lbe l
 
 #### Reaction
 
-- As a user I can react to a post
+- As a user I can react to a post.
 - As a user I can view all the reactions on a post
 - As a user I can see the number of reactions on a post.
 - As a user I can delete my reactions on a post.
@@ -56,3 +57,11 @@ At a high level, when our user is requesting data the flow of the data wil lbe l
 
 - yarn.lock must be checked into version control so Netlify can know to install yarn.
 - ./admin/yarn.lock
+
+# Client/Web
+
+# Client/Admin
+
+
+# Server/API/Heroku
+
