@@ -51,3 +51,8 @@ At a high level, when our user is requesting data the flow of the data wil lbe l
 - As a user I can view all the reactions on a post
 - As a user I can see the number of reactions on a post.
 - As a user I can delete my reactions on a post.
+
+# FAQ
+
+- yarn.lock must be checked into version control so Netlify can know to install yarn.
+- ./admin/yarn.lock
