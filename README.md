@@ -8,13 +8,13 @@ In full stack development it's help to contemplate the flow of data.
 
 The flow of full stack will always be from `Client > Server` then `Server > Client`.
 
-### Client > Server
+### Web/Admin > Server/API
 
 At a high level, when users are inserting data into our database, the flow will be like the following.
 
 `Input > Handler > Submit Handler > Action > API > Controller > Handler > Database`
 
-### Server > Client
+### Server/API > Web/Admin
 
 At a high level, when our user is requesting data the flow of the data wil lbe like so.
 
