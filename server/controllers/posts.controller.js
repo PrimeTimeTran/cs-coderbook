@@ -1,5 +1,4 @@
 const Post = require("../models/Post");
-const Image = require("../models/Image");
 
 const {
   AppError,
@@ -11,14 +10,14 @@ const postController = {};
 
 postController.create = catchAsync(async (req, res) => {
   const post = await Post.create({ owner: req.userId, ...req.body });
-  if (req.body.imageURLS) {
-    for (let imageUrl of req.body.imageURLS) { 
-      const newImage = await Image.create({ postId: post.id, owner: req.userId});
-      await newImage.save()
-      post.images.push(newImage._id)
-    }
-  }
-  res.json(post);
+  return sendResponse(
+    res,
+    200,
+    true,
+    post,
+    null,
+    "Post created.",
+  );
 });
 
 postController.read = catchAsync(async (req, res, next) => {
@@ -26,10 +25,10 @@ postController.read = catchAsync(async (req, res, next) => {
   if (!post)
     return next(new AppError(404, "Post not found", "Get Single Post Error"));
 
-  await post.populate("owner").populate("comments").populate("images");
+  await post.populate("owner").populate("comments")
   await post.execPopulate();
 
-  res.json(post);
+  return sendResponse(res, 201, true, post, null, "Individual Post.");
 });
 
 postController.update = catchAsync(async (req, res) => {
@@ -42,7 +41,7 @@ postController.update = catchAsync(async (req, res) => {
       if (!post) {
         res.status(404).json({ message: "Post not Found" });
       } else {
-        res.json(post);
+        return sendResponse(res, 200, true, post, null, "Post updated.");
       }
     }
   );
@@ -53,7 +52,7 @@ postController.destroy = catchAsync(async (req, res) => {
     if (!post) {
       res.status(404).json({ message: "Post not Found" });
     } else {
-      res.json(post);
+      return sendResponse(res, 204, true, null, null, "Post deleted.");
     }
   });
 });
@@ -63,7 +62,18 @@ postController.list = catchAsync(async (req, res) => {
     res,
     200,
     true,
-    { posts: [{ foo: "bar" }] },
+    { 
+      posts: [
+        { 
+          id: 0, 
+          body: "Foo",
+        },
+        { 
+          id: 1, 
+          body: "Bar",
+        },
+      ] 
+    },
     null,
     "Login successful"
   );

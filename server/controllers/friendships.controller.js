@@ -7,9 +7,9 @@ const {
   sendResponse,
 } = require("../helpers/utils.helper");
 
-const commentsController = {};
+const friendshipsController = {};
 
-commentsController.create = catchAsync(async (req, res) => {
+friendshipsController.create = catchAsync(async (req, res) => {
   const comment = await Comment.create({
     owner: req.userId,
     body: req.body.body,
@@ -19,7 +19,7 @@ commentsController.create = catchAsync(async (req, res) => {
   res.json(comment);
 });
 
-commentsController.read = async (req, res) => {
+friendshipsController.read = async (req, res) => {
   const comment = await Comment.findOne({ _id: req.params.id }).populate(
     "owner"
   );
@@ -30,7 +30,7 @@ commentsController.read = async (req, res) => {
   }
 };
 
-commentsController.update = async (req, res) => {
+friendshipsController.update = async (req, res) => {
   await Comment.findByIdAndUpdate(
     { _id: req.params.id },
     { email: req.body.email },
@@ -46,7 +46,7 @@ commentsController.update = async (req, res) => {
   );
 };
 
-commentsController.destroy = async (req, res) => {
+friendshipsController.destroy = async (req, res) => {
   await Comment.findByIdAndDelete(req.params.id, (err, comment) => {
     if (!comment) {
       res.status(404).json({ message: "Comment not found." });
@@ -56,7 +56,7 @@ commentsController.destroy = async (req, res) => {
   });
 };
 
-commentsController.list = async (req, res) => {
+friendshipsController.list = async (req, res) => {
   await Comment.find({}, (err, comments) => {
     if (!comments) {
       res.status(404).json({ message: "Comments not found." });
@@ -66,4 +66,4 @@ commentsController.list = async (req, res) => {
   });
 };
 
-module.exports = commentsController;
+module.exports = friendshipsController;

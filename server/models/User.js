@@ -14,25 +14,34 @@ const userSchema = Schema(
     username: { type: String, required: false, unique: false, default: "" },
     lastName: { type: String, required: false, unique: false, default: "" },
     firstName: { type: String, required: false, unique: false, default: "" },
+    intro: { type: String, required: false, unique: false, default: "" },
+    occupations: [],
+    currentLocation: {
+      default: "",
+      type: Object,
+      unique: false,
+      required: false,
+    },
     friends: [],
     posts: [],
     comments: [],
     reactions: [],
     conversations: [],
     messages: [],
+    hobbies: [],
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 userSchema.statics.findByEmail = function findByEmail(email) {
-  return this.findOne({ email })
-}
+  return this.findOne({ email });
+};
 
 userSchema.statics.findByUsername = function findByUsername(username) {
-  return this.findOne({ username })
-}
+  return this.findOne({ username });
+};
 
 userSchema.statics.findOrCreate = function findOrCreate(profile, cb) {
   var userObj = new this();
@@ -58,12 +67,12 @@ userSchema.statics.findOrCreate = function findOrCreate(profile, cb) {
 
 userSchema.methods.toJSON = function () {
   const obj = this.toObject();
-  delete obj._id;
+  // delete obj._id;
   delete obj.__v;
   delete obj.googleId;
   delete obj.password;
   delete obj.createdAt;
-  delete obj.updatedAt;  
+  delete obj.updatedAt;
   delete obj.facebookId;
   return obj;
 };

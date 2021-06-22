@@ -5,18 +5,6 @@ import { toast } from "react-toastify";
 const createPost = (body, images) => async (dispatch) => {
   dispatch({ type: types.CREATE_POST_REQUEST, payload: null });
   try {
-    // For uploading file manually
-    // const formData = new FormData();
-    // formData.append("title", title);
-    // formData.append("content", content);
-    // if (images && images.length) {
-    //   for (let index = 0; index < images.length; index++) {
-    //     formData.append("images", images[index]);
-    //   }
-    // }
-    // const res = await api.post("/posts", formData);
-
-    // Upload images using cloudinary already
     const res = await api.post("/posts", { body, images });
 
     dispatch({
@@ -73,9 +61,6 @@ const getSinglePost = (postId) => async (dispatch) => {
 const updatePost = (postId, title, content, images) => async (dispatch) => {
   dispatch({ type: types.UPDATE_POST_REQUEST, payload: null });
   try {
-    // let formData = new FormData();
-    // formData.set("title", title);
-    // formData.set("content", content);
     const res = await api.put(`/posts/${postId}`, { title, content, images });
 
     dispatch({

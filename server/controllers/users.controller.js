@@ -30,7 +30,7 @@ userController.create = catchAsync(async (req, res, next) => {
     true,
     { user, accessToken },
     null,
-    "Create user successful",
+    "Used created.",
   );
 });
 
@@ -39,7 +39,7 @@ userController.read = async (req, res) => {
   if (!user) {
     res.status(404).json({ message: "User not Found" });
   } else {
-    res.json(user);
+    sendResponse(res, 201, true, user);
   }
 };
 
@@ -55,7 +55,7 @@ userController.list = async (req, res) => {
 userController.update = async (req, res) => {
   await User.findByIdAndUpdate(
     { _id: req.params.id },
-    { email: req.body.email },
+    { ...req.body },
     { new: true },
     (err, user) => {
       console.log({ err, user });

@@ -13,4 +13,10 @@ router.use('/posts', postsRouter)
 const commentsRouter = require("./comments.api");
 router.use('/comments', commentsRouter)
 
+const friendshipsRouter = require("./friendships.api");
+router.use('/friendships', friendshipsRouter)
+
+const eventsRouter = require("./events.api");
+router.use("/events", eventsRouter);
+
 module.exports = router;
