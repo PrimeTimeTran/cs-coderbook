@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Row, Col, Nav, Button, Container, ButtonGroup } from "react-bootstrap";
 
 import "./style.css";
