@@ -62,7 +62,7 @@ export default function Foos() {
           <MUIDataTable
             title="Foos List"
             data={foos || datatableData}
-            columns={["Id", "Name", "Company", "City", "Title", "Salary"]}
+            columns={["Id", "Foo", "Company", "City", "Title", "Salary"]}
             options={{
               filterType: "checkbox",
             }}

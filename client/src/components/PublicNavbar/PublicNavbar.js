@@ -2,16 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import {
-  Nav,
-  Form,
-  Navbar,
-  FormControl,
-  NavDropdown,
-} from "react-bootstrap";
+import { Nav, Form, Navbar, FormControl, NavDropdown } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./style.css";
+import { windowSize } from "../../utils";
 
 import logo from "../../assets/site-identity.png";
 import { authActions } from "../../redux/actions";
@@ -76,7 +71,11 @@ const PublicNavbar = () => {
   );
 
   return (
-    <Navbar bg="light" expand="lg" className="sticky-top box-shadow">
+    <Navbar
+      bg="light"
+      expand="lg"
+      className={`${windowSize("") === "sm" ? "sticky-top" : ""}  box-shadow`}
+    >
       <Navbar.Brand as={Link} to="/" className="mr-auto ">
         <img src={logo} alt="coderbook" width="50px" />
       </Navbar.Brand>

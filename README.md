@@ -28,7 +28,14 @@ The flow of data will be like the following when users are requesting data from 
 
 ### Requirements
 
-#### Users
+### Foos
+
+- As a user I can create a foo.
+- As a user I can see a list of all foos.
+- As a user I can update a foo.
+- As a user I can delete a foo.
+
+#### Web/Admin/Mobiles Users
 
 - As a user I can register an account.
 - As a user I can sign in after registering an account.
@@ -36,7 +43,7 @@ The flow of data will be like the following when users are requesting data from 
 - As a user I can see my account's profile on a profile page.
 - As a user I update my profile on my profile page.
 
-#### Posts
+### Web/Admin/Mobile Posts
 
 - As a user I can create a post from my homepage.
 - As a user I can view all my friends and I's post on the homepage.
@@ -45,7 +52,7 @@ The flow of data will be like the following when users are requesting data from 
 - As a user I can update posts I've written/shared.
 - As a user I can delete posts I've written/shared.
 
-#### Comments
+#### Web/Admin/Mobile Comments
 
 - As a user I can comment on a post.
 - As a user I can view all the comments of a post.
