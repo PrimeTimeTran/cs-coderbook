@@ -6,10 +6,7 @@ HTML, CSS, JS, ES6, Bootstrap, Flex,
 
 NPM, Node.JS, React.JS, React Native, Netlify, Heroku
 
-
-
-## 
-
+##
 
 - React
 - React Native
@@ -31,7 +28,7 @@ The flow of data will be like the following when users are requesting data from 
 
 ### Requirements
 
-#### User
+#### Users
 
 - As a user I can register an account.
 - As a user I can sign in after registering an account.
@@ -39,7 +36,7 @@ The flow of data will be like the following when users are requesting data from 
 - As a user I can see my account's profile on a profile page.
 - As a user I update my profile on my profile page.
 
-#### Post
+#### Posts
 
 - As a user I can create a post from my homepage.
 - As a user I can view all my friends and I's post on the homepage.
@@ -48,7 +45,7 @@ The flow of data will be like the following when users are requesting data from 
 - As a user I can update posts I've written/shared.
 - As a user I can delete posts I've written/shared.
 
-#### Comment
+#### Comments
 
 - As a user I can comment on a post.
 - As a user I can view all the comments of a post.
@@ -56,12 +53,18 @@ The flow of data will be like the following when users are requesting data from 
 - As a user I can update a comment which I've made.
 - As a user I can delete my comments on a post.
 
-#### Reaction
+#### Reactions
 
 - As a user I can react to a post.
-- As a user I can view all the reactions on a post
+- As a user I can view all the reactions on a post.
 - As a user I can see the number of reactions on a post.
 - As a user I can delete my reactions on a post.
+
+#### Images
+
+#### Groups
+
+#### Events
 
 # FAQ
 
@@ -72,6 +75,4 @@ The flow of data will be like the following when users are requesting data from 
 
 # Client/Admin
 
-
 # Server/API/Heroku
-
