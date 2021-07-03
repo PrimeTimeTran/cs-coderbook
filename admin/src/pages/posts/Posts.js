@@ -39,25 +39,26 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Posts() {
   const classes = useStyles();
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState(null);
   useEffect(() => {
     async function getPosts() {
       const resp = await fetch("http://localhost:5000/api/posts");
       const json = await resp.json();
-      console.log({ json });
+      setPosts(json.data.foos);
     }
     getPosts();
   }, []);
-  console.log("getPosts");
+
+  console.log({ posts });
   return (
     <>
       <PageTitle title="Posts" />
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <MUIDataTable
-            title="Employee List"
-            data={datatableData}
-            columns={["Name", "Company", "City", "State"]}
+            title="Posts List"
+            data={posts || datatableData}
+            columns={["Name", "Company", "City", "State", "Salary"]}
             options={{
               filterType: "checkbox",
             }}
