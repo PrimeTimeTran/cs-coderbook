@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { Row, Col, Button, ButtonGroup } from "react-bootstrap";
+import { Row, Col, Button, ButtonGroup, DropdownButton, Dropdown } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./style.css";
@@ -40,6 +40,8 @@ const SIDEBAR_BUTTONS = [
 ];
 
 const SidebarButton = ({ title, icon }) => {
+
+
   return (
     <Button className="d-flex align-items-center sidebar-button border-0 text-dark btn-light">
       {" "}
@@ -49,9 +51,28 @@ const SidebarButton = ({ title, icon }) => {
   );
 };
 
+const Buttons = () => {
+  return (
+    <ButtonGroup vertical>
+      {SIDEBAR_BUTTONS.map((b) => {
+        return <SidebarButton key={b.title} {...b} />;
+      })}
+    </ButtonGroup>
+  );
+}
+
+const Sidebar = () => {
+  const isSmallWindow = window.innerWidth < 576;
+  if (isSmallWindow)
+    return (
+      <></>
+    );
+  return (
+    <Buttons />
+  );
+}
 
 export default function HomePage() {
-  console.log({ foo: "HomePage" });
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   useEffect(() => {}, []);
@@ -60,17 +81,14 @@ export default function HomePage() {
 
   return (
     <Row>
-      <Col className="d-flex flex-column pl-1 mt-3">
-        <ButtonGroup vertical>
-          {SIDEBAR_BUTTONS.map((b) => {
-            return <SidebarButton key={b.title} {...b} />;
-          })}
-        </ButtonGroup>
+      <Col sm={3} className="d-flex flex-column pl-1 mt-3">
+        <Sidebar />
       </Col>
       <Col
-        xs={5}
+        xs={12}
+        md={5}
         id="scrollingElement"
-        className="d-flex flex-column align-items-center posts-container"
+        className="d-flex flex-column align-items-center posts-container p-4"
       >
         <Composer />
         <Post author="Truth" image={sampleImage()}>
@@ -102,7 +120,7 @@ export default function HomePage() {
         <Post image={sampleImage()}></Post>
         <Post image={sampleImage()}></Post>
       </Col>
-      <Col></Col>
+      <Col md={3} ></Col>
     </Row>
   );
 }

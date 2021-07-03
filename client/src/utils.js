@@ -50,5 +50,11 @@ const sampleImage = () => {
   return images[Math.floor(Math.random() * images.length)];
 };
 
+const windowSize = () => {
+  if (window.innerWidth < 576) return "sm"
+  if (window.innerWidth < 991) return "md"
+  if (window.innerWidth < 1199) return "lg"
+}
 
-export { sampleImage, randonNumber };
+
+export { sampleImage, randonNumber, windowSize };

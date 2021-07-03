@@ -17,7 +17,6 @@ import useStyles from "./styles";
 
 // components
 import SidebarLink from "./components/SidebarLink/SidebarLink";
-import Dot from "./components/Dot";
 
 // context
 import {
@@ -35,15 +34,16 @@ const structure = [
     icon: <TypographyIcon />,
   },
   { id: 2, label: "Tables", link: "/app/tables", icon: <TableIcon /> },
-  { id: 3, label: "Foos", link: "/app/foos", icon: <TableIcon /> },
+  { id: 3, label: "Posts", link: "/app/posts", icon: <TableIcon /> },
+  { id: 4, label: "Foos", link: "/app/foos", icon: <TableIcon /> },
   {
-    id: 4,
+    id: 5,
     label: "Notifications",
     link: "/app/notifications",
     icon: <NotificationsIcon />,
   },
   {
-    id: 5,
+    id: 6,
     label: "UI Elements",
     link: "/app/ui",
     icon: <UIElementsIcon />,

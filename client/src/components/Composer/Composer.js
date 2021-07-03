@@ -3,6 +3,7 @@ import { Card, Form, Button, ButtonGroup } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./style.css";
+import { windowSize } from "../../utils"
 
 const ComposerButton = ({ title, icon, widget }) => {
   const onClickButton = () => {
@@ -11,31 +12,19 @@ const ComposerButton = ({ title, icon, widget }) => {
     }
   }
     return (
-      <Button onClick={onClickButton} className="d-flex justify-content-center align-items-center bg-light bg-white text-dark border-0 rounded-md">
+      <Button
+        onClick={onClickButton}
+        className="d-flex justify-content-center align-items-center bg-light bg-white text-dark border-0 rounded-md composer-button"
+      >
         {" "}
-        <FontAwesomeIcon icon={icon} className="mr-2" size="lg" />
+        <FontAwesomeIcon icon={icon} className="mr-2" size={windowSize()} />
         {title}
       </Button>
     );
 };
 
 export default function Composer() {
-  // const [imageUrl, setImageUrl] = useState('')
   const [images, setImages] = useState([])
-
-  // const widget = window.cloudinary.createUploadWidget(
-  //   {
-  //     cloudName: "primetimetran",
-  //     uploadPreset: "Coderbook Demo Treo2",
-  //     folder: "coderbook",
-  //   },
-  //   (error, result) => {
-  //     console.log({ result });
-  //     if (result.event === 'success') {
-  //       setImageUrl(result.info.url)
-  //     }
-  //   },
-  // );
 
   const onChangeImage = (e) => {
     setImages([...images, e.target.files[0]]);
@@ -61,7 +50,7 @@ export default function Composer() {
   }
 
   return (
-    <Card className="mb-3 w-100 shadow composer-card">
+    <Card className="mb-3 w-100 shadow composer-card p-2">
       <Card.Body className="px-3 pt-3">
         {" "}
         {/* STEP 2 */}
@@ -78,16 +67,13 @@ export default function Composer() {
       </Card.Body>
       <hr className="mt-0" />
 
-      <input type="file" onChange={onChangeImage} />
-
-      <button onClick={onCreatePost} >Post</button>
+      <Button onClick={onCreatePost}>Post</Button>
 
       <ButtonGroup size="lg" className="m-2">
         <ComposerButton title="Live Video" icon="video" />
         <ComposerButton
           title="Photo Video"
           icon="photo-video"
-          // widget={widget}
         />
         <ComposerButton title="Feeling/Activity" icon="smile" />
       </ButtonGroup>
