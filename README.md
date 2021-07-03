@@ -6,7 +6,7 @@ HTML, CSS, JS, ES6, Bootstrap, Flex,
 
 NPM, Node.JS, React.JS, React Native, Netlify, Heroku
 
-##
+## Stack
 
 - React
 - React Native
@@ -14,17 +14,17 @@ NPM, Node.JS, React.JS, React Native, Netlify, Heroku
 - Netlify
 - Heroku
 
-### Web/Admin/Mobile > Server/API
+### Client/Web/Admin/Mobile > Server/API/Node
 
 The flow of data will be like the following when users are inserting data into our database.
 
-`Input > Handler > Submit Handler > Action > REST API > Request > Controller > Handler > Database`
+`Input > State > Handler > Action > REST > Request > API > Controller > Handler > Model > Database`
 
-### Server/API > Web/Admin/Mobile
+### Server/API/Node > Client/Web/Admin/Mobile
 
 The flow of data will be like the following when users are requesting data from our database.
 
-`Database > Handler > Controller > REST API > Response >Action > Reducer > Component > User Interface`
+`Database > Model > Handler > Controller > API > Response > Handler/Action > State > Component > U.I.`
 
 ### Requirements
 

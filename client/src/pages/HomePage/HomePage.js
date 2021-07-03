@@ -7,10 +7,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./style.css";
 
+import { sampleImage } from '../../utils'
+
 import Post from "../../components/Post";
 import Composer from "../../components/Composer";
 
 const SIDEBAR_BUTTONS = [
+  {
+    title: "Foos",
+    icon: " ",
+  },
   {
     title: "Friends",
     icon: "users",
@@ -43,12 +49,11 @@ const SidebarButton = ({ title, icon }) => {
   );
 };
 
-/* STEP 3 */
+
 export default function HomePage() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  
-  useEffect(() => {
-  }, []);
+
+  useEffect(() => {}, []);
 
   if (!isAuthenticated) return <Redirect to="/auth" />;
 
@@ -67,10 +72,34 @@ export default function HomePage() {
         className="d-flex flex-column align-items-center posts-container"
       >
         <Composer />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        <Post author="Truth" image={sampleImage()}>
+          💯
+        </Post>
+        <Post author="Jaguar Student" image={sampleImage()}>
+          It is up to me 💯
+        </Post>
+        <Post author="Charles Lee" image={sampleImage()}>
+          Can we make it more 🔥 ...?
+        </Post>
+        <Post author="Incredible Developer" image={sampleImage()}>
+          This template includes the use of HTML, CSS, ES6, React, Redux, NPM,
+          Node, React Native, Bootstrap, Flex, & so much more. lol =).
+        </Post>
+        <Post image={sampleImage()}></Post>
+        <Post image={sampleImage()}></Post>
+        <Post image={sampleImage()}></Post>
+        <Post image={sampleImage()}></Post>
+        <Post image={sampleImage()}></Post>
+        <Post image={sampleImage()}></Post>
+        <Post image={sampleImage()}></Post>
+        <Post image={sampleImage()}></Post>
+        <Post image={sampleImage()}></Post>
+        <Post image={sampleImage()}></Post>
+        <Post image={sampleImage()}></Post>
+        <Post image={sampleImage()}></Post>
+        <Post image={sampleImage()}></Post>
+        <Post image={sampleImage()}></Post>
+        <Post image={sampleImage()}></Post>
       </Col>
       <Col></Col>
     </Row>
