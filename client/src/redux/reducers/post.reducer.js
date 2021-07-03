@@ -8,7 +8,6 @@ const initialState = {
 };
 
 const postReducer = (state = initialState, action) => {
-  // const { type, payload } = action;
   const { type } = action;
   switch (type) {
     case types.READ_POSTS:
