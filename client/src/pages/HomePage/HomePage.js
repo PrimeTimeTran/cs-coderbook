@@ -15,7 +15,7 @@ import Composer from "../../components/Composer";
 const SIDEBAR_BUTTONS = [
   {
     title: "Foos",
-    icon: " ",
+    icon: "users",
   },
   {
     title: "Friends",

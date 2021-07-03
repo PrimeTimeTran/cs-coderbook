@@ -140,7 +140,7 @@ function PostHeader({ author }) {
 
 export default function Post({ children, author, image }) {
   return (
-    <Card className="p-3 mb-3 shadow rounded-md">
+    <Card className="p-3 mb-3 shadow rounded-md vw-75">
       <PostHeader author={author} />
       <div class="py-2">{children}</div>
       <Card.Img variant="top" src={image} />
