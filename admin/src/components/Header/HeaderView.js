@@ -86,33 +86,35 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
         onClick={toggleSidebar}
         className={classNames(
           classes.headerMenuButton,
-          classes.headerMenuButtonCollapse
+          classes.headerMenuButtonCollapse,
         )}
       >
         {isSidebarOpened ? (
           <ArrowBackIcon
             classes={{
-              root: classNames(classes.headerIcon, classes.headerIconCollapse)
+              root: classNames(classes.headerIcon, classes.headerIconCollapse),
             }}
           />
         ) : (
           <MenuIcon
             classes={{
-              root: classNames(classes.headerIcon, classes.headerIconCollapse)
+              root: classNames(classes.headerIcon, classes.headerIconCollapse),
             }}
           />
         )}
       </IconButton>
-      <Typography variant="h6" weight="medium" className={classes.logotype}>React Material Admin</Typography>
+      <Typography variant="h6" weight="medium" className={classes.logotype}>
+        React Material Admin
+      </Typography>
       <div className={classes.grow} />
       <div
         className={classNames(classes.search, {
-          [classes.searchFocused]: props.isSearchOpen
+          [classes.searchFocused]: props.isSearchOpen,
         })}
       >
         <div
           className={classNames(classes.searchIcon, {
-            [classes.searchIconOpened]: props.isSearchOpen
+            [classes.searchIconOpened]: props.isSearchOpen,
           })}
           onClick={props.toggleSearch}
         >
@@ -122,7 +124,7 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
           placeholder="Search…"
           classes={{
             root: classes.inputRoot,
-            input: classes.inputInput
+            input: classes.inputInput,
           }}
         />
       </div>
@@ -187,7 +189,7 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
             {messages.length} New Messages
           </Typography>
         </div>
-        {messages.map(message => (
+        {messages.map((message) => (
           <MenuItem key={message.id} className={classes.messageNotification}>
             <div className={classes.messageNotificationSide}>
               <UserAvatar color={message.variant} name={message.name} />
@@ -198,7 +200,7 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
             <div
               className={classNames(
                 classes.messageNotificationSide,
-                classes.messageNotificationBodySide
+                classes.messageNotificationBodySide,
               )}
             >
               <Typography weight="medium" gutterBottom>
@@ -226,7 +228,7 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
         className={classes.headerMenu}
         disableAutoFocusItem
       >
-        {notifications.map(notification => (
+        {notifications.map((notification) => (
           <MenuItem
             key={notification.id}
             onClick={props.closeNotificationsMenu}
@@ -247,21 +249,21 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
       >
         <div className={classes.profileMenuUser}>
           <Typography variant="h4" weight="medium">
-            John Smith
+            Loi Tran
           </Typography>
           <Typography
             className={classes.profileMenuLink}
             component="a"
             color="primary"
-            href="https://flatlogic.com"
+            href="https://github.com/primetimetran"
           >
-            Flalogic.com
+            PrimeTimeTran
           </Typography>
         </div>
         <MenuItem
           className={classNames(
             classes.profileMenuItem,
-            classes.headerMenuItem
+            classes.headerMenuItem,
           )}
         >
           <AccountIcon className={classes.profileMenuIcon} /> Profile
@@ -269,7 +271,7 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
         <MenuItem
           className={classNames(
             classes.profileMenuItem,
-            classes.headerMenuItem
+            classes.headerMenuItem,
           )}
         >
           <AccountIcon className={classes.profileMenuIcon} /> Tasks
@@ -277,7 +279,7 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
         <MenuItem
           className={classNames(
             classes.profileMenuItem,
-            classes.headerMenuItem
+            classes.headerMenuItem,
           )}
         >
           <AccountIcon className={classes.profileMenuIcon} /> Messages
