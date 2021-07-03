@@ -1,43 +1,51 @@
 # Coderbook
 
-## Objectives
+An example set of tech projects a startup might have using the following:
 
-To test your abilities in full stack web development using the M.E.R.N. stack.
+HTML, CSS, JS, ES6, Bootstrap, Flex,
 
-In full stack development it's help to contemplate the flow of data.
+NPM, Node.JS, React.JS, React Native, Netlify, Heroku
 
-The flow of full stack will always be from `Client > Server` then `Server > Client`.
+## Stack
 
-### Client > Server
+- React
+- React Native
+- Node
+- Netlify
+- Heroku
 
-At a high level, when users are inserting data into our database, the flow will be like the following.
+### Client/Web/Admin/Mobile > Server/API/Node
 
-`Input > Handler > Submit Handler > Action > API > Controller > Handler > Database`
+The flow of data will be like the following when users are inserting data into our database.
 
-### Server > Client
+`Input > State > Handler > Action > REST > Request > API > Controller > Handler > Model > Database`
 
-At a high level, when our user is requesting data the flow of the data wil lbe like so.
+### Server/API/Node > Client/Web/Admin/Mobile
 
-`Database > Handler > Controller > REST response > Action > Reducer > Component > User Interface`
+The flow of data will be like the following when users are requesting data from our database.
+
+`Database > Model > Handler > Controller > API > Response > Handler/Action > State > Component > U.I.`
 
 ### Requirements
 
-#### User
+#### Users
 
 - As a user I can register an account.
-- As a user I can see my account information on my profile page.
-- As a user I update my account.
-- As a user I can delete my account
+- As a user I can sign in after registering an account.
+- As a user I'm redirected to a homepage after I've signed in.
+- As a user I can see my account's profile on a profile page.
+- As a user I update my profile on my profile page.
 
-#### Post
+#### Posts
 
-- As a user I can create a post.
-- As a user I can view all posts on the homepage.
-- As a user I can view all my posts on my profile.
-- As a user I can update my own posts.
-- As a user I can delete my own posts.
+- As a user I can create a post from my homepage.
+- As a user I can view all my friends and I's post on the homepage.
+- As a user I can create a post from my profile page.
+- As a user I can view all my posts and the posts I've shared on my profile page.
+- As a user I can update posts I've written/shared.
+- As a user I can delete posts I've written/shared.
 
-#### Comment
+#### Comments
 
 - As a user I can comment on a post.
 - As a user I can view all the comments of a post.
@@ -45,9 +53,26 @@ At a high level, when our user is requesting data the flow of the data wil lbe l
 - As a user I can update a comment which I've made.
 - As a user I can delete my comments on a post.
 
-#### Reaction
+#### Reactions
 
-- As a user I can react to a post
-- As a user I can view all the reactions on a post
+- As a user I can react to a post.
+- As a user I can view all the reactions on a post.
 - As a user I can see the number of reactions on a post.
 - As a user I can delete my reactions on a post.
+
+#### Images
+
+#### Groups
+
+#### Events
+
+# FAQ
+
+- yarn.lock must be checked into version control so Netlify can know to install yarn.
+- ./admin/yarn.lock
+
+# Client/Web
+
+# Client/Admin
+
+# Server/API/Heroku

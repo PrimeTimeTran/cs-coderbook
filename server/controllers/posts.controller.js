@@ -1,4 +1,4 @@
-const Post = require("../models/Post");
+const Post = require("../models/Post.model");
 
 const {
   AppError,
@@ -10,7 +10,34 @@ const postController = {};
 
 postController.create = catchAsync(async (req, res) => {
   const post = await Post.create({ owner: req.userId, ...req.body });
-  res.json(post);
+  return sendResponse(res, 200, true, post, null, "Post created.");
+});
+
+postController.list = catchAsync(async (req, res) => {
+  return sendResponse(
+    res,
+    200,
+    true,
+    {
+      foos: [
+        ["Foo", "Apple", "Yonkers", "NY", 490_000],
+        ["Bar", "Facebook", "Hartford", "CT", 390_000],
+        ["Fizz", "Apple", "Hartford", "CT", 290_000],
+        ["Fuzz", "Google", "Tampa", "FL", 390_000],
+        ["Buzz", "Amazon", "Hartford", "CT", 190_000],
+        ["Spam", "Netflix", "Yonkers", "NY"],
+        ["Ham", "Airbnb", "Dallas", "TX"],
+        ["Eggs", "Uber", "Yonkers", "NY", 410_000],
+        ["Kegs", "Paypal", "Dallas", "TX", 350_000],
+        ["Legs", "Visa", "Yonkers", "NY"],
+        ["Alpha", "Google", "Tallahassee", "FL", 280_000],
+        ["Beta", "Apple", "Tampa", "FL", 300_000],
+        ["Charlie", "Facebook", "Jacksonville", "FL", 250_000],
+      ],
+    },
+    null,
+    "You've got posts!",
+  );
 });
 
 postController.read = catchAsync(async (req, res, next) => {
@@ -21,7 +48,7 @@ postController.read = catchAsync(async (req, res, next) => {
   await post.populate("owner").populate("comments");
   await post.execPopulate();
 
-  res.json(post);
+  return sendResponse(res, 201, true, post, null, "Individual Post.");
 });
 
 postController.update = catchAsync(async (req, res) => {
@@ -34,9 +61,9 @@ postController.update = catchAsync(async (req, res) => {
       if (!post) {
         res.status(404).json({ message: "Post not Found" });
       } else {
-        res.json(post);
+        return sendResponse(res, 200, true, post, null, "Post updated.");
       }
-    }
+    },
   );
 });
 
@@ -45,20 +72,9 @@ postController.destroy = catchAsync(async (req, res) => {
     if (!post) {
       res.status(404).json({ message: "Post not Found" });
     } else {
-      res.json(post);
+      return sendResponse(res, 204, true, null, null, "Post deleted.");
     }
   });
-});
-
-postController.list = catchAsync(async (req, res) => {
-  return sendResponse(
-    res,
-    200,
-    true,
-    { posts: [{ foo: "bar" }] },
-    null,
-    "Login successful"
-  );
 });
 
 module.exports = postController;

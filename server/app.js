@@ -1,20 +1,20 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 
 require("dotenv").config();
 const cors = require("cors");
 const mongoose = require("mongoose");
 const MONGODB_URI = process.env.MONGODB_URI;
 
-var app = express();
+const app = express();
 
-app.use(logger('dev'));
+app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 
 mongoose
@@ -31,21 +31,24 @@ mongoose
     console.log({ e });
   });
 
-/* Initialize Routes */
-var indexRouter = require("./api/index");
+// http://localhost:5000/api
+const indexRouter = require("./api/index");
 app.use("/api", indexRouter);
 
-// catch 404 and forard to error handler
+// http://localhost:5000/foo
+app.use("/foo", (req, res, next) => {
+  res.send({ foo: "bar" });
+});
+
 app.use((req, res, next) => {
   const err = new Error("Not Found");
   err.statusCode = 404;
   next(err);
 });
 
+const utilsHelper = require("./helpers/utils.helper");
 
-const utilsHelper = require('./helpers/utils.helper')
-
-/* Initialize Error Handling */
+// Error handling
 app.use((err, req, res, next) => {
   console.log("ERROR", err);
   if (err.isOperational) {
@@ -55,7 +58,7 @@ app.use((err, req, res, next) => {
       false,
       null,
       { message: err.message },
-      err.errorType
+      err.errorType,
     );
   } else {
     return utilsHelper.sendResponse(
@@ -64,7 +67,7 @@ app.use((err, req, res, next) => {
       false,
       null,
       { message: err.message },
-      "Internal Server Error"
+      "Internal Server Error",
     );
   }
 });

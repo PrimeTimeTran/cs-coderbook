@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Row, Col, Nav, Button, Container, ButtonGroup } from "react-bootstrap";
 
 import "./style.css";
@@ -89,31 +87,6 @@ export default function ProfilePage() {
           </Col>
           <Col xs={7} className="posts-col">
             <Composer />
-            <h1>Post</h1>
-            <h1>Post</h1>
-            <h1>Post</h1>
-            <h1>Post</h1>
-            <h1>Post</h1>
-            <h1>Post</h1>
-            <h1>Post</h1>
-            <h1>Post</h1>
-            <h1>Post</h1>
-            <h1>Post</h1>
-            <h1>Post</h1>
-            <h1>Post</h1>
-            <h1>Post</h1>
-            <h1>Post</h1>
-            <h1>Post</h1>
-            <h1>Post</h1>
-            <h1>Post</h1>
-            <h1>Post</h1>
-            <h1>Post</h1>
-            <h1>Post</h1>
-            <h1>Post</h1>
-            <h1>Post</h1>
-            <h1>Post</h1>
-            <h1>Post</h1>
-            <h1>Post</h1>
             <h1>Post</h1>
             <h1>Post</h1>
           </Col>

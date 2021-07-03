@@ -2,8 +2,7 @@
 const crypto = require("crypto");
 const utilsHelper = {};
 
-// This function controls the way we response to the client
-// If we need to change the way to response later on, we only need to handle it here
+// Manage how we respond to clients here when needed
 utilsHelper.sendResponse = (res, status, success, data, errors, message) => {
   const response = {};
   if (success) response.success = success;

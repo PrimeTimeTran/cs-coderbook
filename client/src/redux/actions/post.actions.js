@@ -5,18 +5,6 @@ import { toast } from "react-toastify";
 const createPost = (body, images) => async (dispatch) => {
   dispatch({ type: types.CREATE_POST_REQUEST, payload: null });
   try {
-    // For uploading file manually
-    // const formData = new FormData();
-    // formData.append("title", title);
-    // formData.append("content", content);
-    // if (images && images.length) {
-    //   for (let index = 0; index < images.length; index++) {
-    //     formData.append("images", images[index]);
-    //   }
-    // }
-    // const res = await api.post("/posts", formData);
-
-    // Upload images using cloudinary already
     const res = await api.post("/posts", { body, images });
 
     dispatch({
@@ -32,7 +20,7 @@ const createPost = (body, images) => async (dispatch) => {
 const postsRequest =
   (pageNum = 1, limit = 10, query = null, ownerId = null, sortBy = null) =>
   async (dispatch) => {
-    dispatch({ type: types.POST_REQUEST, payload: null });
+    dispatch({ type: types.READ_POSTS, payload: null });
     try {
       let queryString = "";
       if (query) {
@@ -49,11 +37,11 @@ const postsRequest =
         `/posts?page=${pageNum}&limit=${limit}${queryString}${sortByString}`,
       );
       dispatch({
-        type: types.POST_REQUEST_SUCCESS,
+        type: types.READ_POSTS_SUCCESS,
         payload: res.data.data,
       });
     } catch (error) {
-      dispatch({ type: types.POST_REQUEST_FAILURE, payload: error });
+      dispatch({ type: types.READ_POSTS_FAILURE, payload: error });
     }
   };
 
@@ -73,9 +61,6 @@ const getSinglePost = (postId) => async (dispatch) => {
 const updatePost = (postId, title, content, images) => async (dispatch) => {
   dispatch({ type: types.UPDATE_POST_REQUEST, payload: null });
   try {
-    // let formData = new FormData();
-    // formData.set("title", title);
-    // formData.set("content", content);
     const res = await api.put(`/posts/${postId}`, { title, content, images });
 
     dispatch({

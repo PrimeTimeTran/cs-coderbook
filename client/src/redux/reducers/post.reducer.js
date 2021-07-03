@@ -10,7 +10,7 @@ const initialState = {
 const postReducer = (state = initialState, action) => {
   const { type } = action;
   switch (type) {
-    case types.POST_REQUEST:
+    case types.READ_POSTS:
       return {
         ...state,
         loading: true,

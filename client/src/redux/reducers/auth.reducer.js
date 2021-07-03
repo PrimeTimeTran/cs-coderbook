@@ -1,6 +1,6 @@
 import * as types from "../constants/auth.constants";
 
-const isAuthenticated = !!localStorage.getItem("accessToken");
+const isAuthenticated = !!localStorage.getItem("accessToken")|| true;
 const initialState = {
   loading: false,
   isAuthenticated,

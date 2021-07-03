@@ -1,10 +1,17 @@
+
+// 1. Import model to CRUD
+// 2. Import helpers for administrative & REST control
+// 3. Define controller properties which map/point to "custom" CRUD handlers
+
 const bcrypt = require("bcryptjs");
+
+const User = require("../models/User.model");
+
 const {
   AppError,
   catchAsync,
   sendResponse,
 } = require("../helpers/utils.helper");
-const User = require("../models/User");
 
 const userController = {};
 
@@ -28,23 +35,32 @@ userController.create = catchAsync(async (req, res, next) => {
     true,
     { user, accessToken },
     null,
-    "Create user successful"
+    "Used created.",
   );
-})
+});
 
-userController.read = async (req, res) => {
+userController.read = catchAsync(async (req, res) => {
   const user = await User.findOne({ _id: req.params.id });
   if (!user) {
     res.status(404).json({ message: "User not Found" });
   } else {
-    res.json(user);
+    sendResponse(res, 201, true, user);
   }
-};
+});
 
-userController.update = async (req, res) => {
+userController.list = catchAsync(async (req, res) => {
+  const users = await User.findOne({});
+  if (!users) {
+    res.status(404).json({ message: "Users not Found" });
+  } else {
+    res.json(users);
+  }
+});
+
+userController.update = catchAsync(async (req, res) => {
   await User.findByIdAndUpdate(
     { _id: req.params.id },
-    { email: req.body.email },
+    { ...req.body },
     { new: true },
     (err, user) => {
       console.log({ err, user });
@@ -53,11 +69,11 @@ userController.update = async (req, res) => {
       } else {
         res.json(user);
       }
-    }
+    },
   );
-};
+});
 
-userController.destroy = async (req, res) => {
+userController.destroy = catchAsync(async (req, res) => {
   await User.findByIdAndDelete(req.params.id, (err, user) => {
     if (!user) {
       res.status(404).json({ message: "User not Found" });
@@ -65,6 +81,6 @@ userController.destroy = async (req, res) => {
       res.json(user);
     }
   });
-};
+});
 
 module.exports = userController;

@@ -1,6 +1,5 @@
 import * as types from "../constants/user.constants";
 import api from "../api";
-// import { alertActions } from "./alert.actions";
 
 const usersRequest = (
   pageNum = 1,
