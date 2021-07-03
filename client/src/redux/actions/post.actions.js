@@ -20,7 +20,7 @@ const createPost = (body, images) => async (dispatch) => {
 const postsRequest =
   (pageNum = 1, limit = 10, query = null, ownerId = null, sortBy = null) =>
   async (dispatch) => {
-    dispatch({ type: types.POST_REQUEST, payload: null });
+    dispatch({ type: types.READ_POSTS, payload: null });
     try {
       let queryString = "";
       if (query) {
@@ -37,11 +37,11 @@ const postsRequest =
         `/posts?page=${pageNum}&limit=${limit}${queryString}${sortByString}`,
       );
       dispatch({
-        type: types.POST_REQUEST_SUCCESS,
+        type: types.READ_POSTS_SUCCESS,
         payload: res.data.data,
       });
     } catch (error) {
-      dispatch({ type: types.POST_REQUEST_FAILURE, payload: error });
+      dispatch({ type: types.READ_POSTS_FAILURE, payload: error });
     }
   };
 

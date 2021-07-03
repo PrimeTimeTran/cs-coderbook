@@ -23,19 +23,19 @@ export default function Composer() {
   const [imageUrl, setImageUrl] = useState('')
   const [images, setImages] = useState([])
 
-  const widget = window.cloudinary.createUploadWidget(
-    {
-      cloudName: "primetimetran",
-      uploadPreset: "Coderbook Demo Treo2",
-      folder: "coderbook",
-    },
-    (error, result) => {
-      console.log({ result });
-      if (result.event === 'success') {
-        setImageUrl(result.info.url)
-      }
-    },
-  );
+  // const widget = window.cloudinary.createUploadWidget(
+  //   {
+  //     cloudName: "primetimetran",
+  //     uploadPreset: "Coderbook Demo Treo2",
+  //     folder: "coderbook",
+  //   },
+  //   (error, result) => {
+  //     console.log({ result });
+  //     if (result.event === 'success') {
+  //       setImageUrl(result.info.url)
+  //     }
+  //   },
+  // );
 
   const onChangeImage = (e) => {
     setImages([...images, e.target.files[0]]);
@@ -89,7 +89,7 @@ export default function Composer() {
         <ComposerButton
           title="Photo Video"
           icon="photo-video"
-          widget={widget}
+          // widget={widget}
         />
         <ComposerButton title="Feeling/Activity" icon="smile" />
       </ButtonGroup>
