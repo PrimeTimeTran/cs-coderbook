@@ -8,6 +8,7 @@ import PublicNavbar from "../../components/PublicNavbar";
 
 import HomePage from "../../pages/HomePage";
 import AuthPage from "../../pages/AuthPage";
+import FoosPage from "../../pages/FoosPage";
 import ProfilePage from "../../pages/ProfilePage";
 import NotFoundPage from "../../pages/NotFoundPage";
 
@@ -20,6 +21,7 @@ const PublicLayout = () => {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/auth" component={AuthPage} />
+          <Route exact path="/foos" component={FoosPage} />
           <PrivateRoute path="/:id" component={ProfilePage} />
           <Route component={NotFoundPage} />
         </Switch>
