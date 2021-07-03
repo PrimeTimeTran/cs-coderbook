@@ -1,4 +1,4 @@
-const Event = require("../models/Event");
+const Event = require("../models/Event.model");
 
 const {
   AppError,
@@ -13,12 +13,11 @@ eventsController.create = catchAsync(async (req, res) => {
   sendResponse(res, 201, true, event);
 });
 
-eventsController.read = catchAsync(async (req, res, next) => {
-});
+eventsController.read = catchAsync(catchAsync(async (req, res, next) => {}));
 
-eventsController.update = catchAsync(async (req, res) => {});
+eventsController.update = catchAsync(catchAsync(async (req, res) => {}));
 
-eventsController.destroy = catchAsync(async (req, res) => {});
+eventsController.destroy = catchAsync(catchAsync(async (req, res) => {}));
 
 eventsController.list = catchAsync(async (req, res) => {
   sendResponse(res, 201, true, {

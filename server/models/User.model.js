@@ -22,7 +22,13 @@ const userSchema = Schema(
       unique: false,
       required: false,
     },
-    friends: [],
+
+    posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
+    comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
+    reactions: [{ type: Schema.Types.ObjectId, ref: "Reaction" }],
+
+    // These are not yet complete...
+    friendships: [],
     posts: [],
     comments: [],
     reactions: [],

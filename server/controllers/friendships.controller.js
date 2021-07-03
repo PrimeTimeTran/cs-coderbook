@@ -1,6 +1,5 @@
-const Comment = require("../models/Comment");
+const Comment = require("../models/Comment.model");
 
-// We don't use AppError & sendResponse in this controller.
 const {
   AppError,
   catchAsync,

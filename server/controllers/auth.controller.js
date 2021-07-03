@@ -1,14 +1,14 @@
 const bcrypt = require("bcryptjs");
 
-const authController = {};
-
-const User = require("../models/User");
+const User = require("../models/User.model");
 
 const {
   AppError,
   catchAsync,
   sendResponse,
 } = require("../helpers/utils.helper");
+
+const authController = {};
 
 authController.loginWithEmail = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
@@ -26,7 +26,7 @@ authController.loginWithEmail = catchAsync(async (req, res, next) => {
     true,
     { user, accessToken },
     null,
-    "Login successful"
+    "Login successful",
   );
 });
 

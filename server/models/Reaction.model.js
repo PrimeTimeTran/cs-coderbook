@@ -19,7 +19,7 @@ const reactionSchema = Schema(
       type: String,
       enum: {
         required: true,
-        values: ["Post", "Comment", "Photo", "Message"],
+        values: ["Post", "Comment", "Image", "Message"],
         message: "{VALUE} is not supported",
       },
     },

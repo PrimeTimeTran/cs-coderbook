@@ -7,7 +7,7 @@ const postSchema = Schema(
     images: [{ type: Schema.Types.ObjectId, ref: "Image" }],
     comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
     reactions: [{ type: Schema.Types.ObjectId, ref: "Reaction" }],
-    imageUrl: Schema.Types.String,
+    imageUrlSingleSimple: Schema.Types.String,
     owner: {
       ref: "User",
       required: true,

@@ -5,7 +5,18 @@ const commentSchema = Schema(
   {
     body: { type: String, unique: false, default: "" },
     reactions: [{ type: Schema.Types.ObjectId, ref: "Reaction" }],
-    post: { ref: "Post", required: true, type: Schema.Types.ObjectId },
+    commentableId: {
+      required: true,
+      type: Schema.Types.ObjectId,
+    },
+    commentableType: {
+      type: String,
+      enum: {
+        required: true,
+        values: ["Post", "Comment"],
+        message: "{VALUE} is not supported",
+      },
+    },
     owner: {
       ref: "User",
       required: true,

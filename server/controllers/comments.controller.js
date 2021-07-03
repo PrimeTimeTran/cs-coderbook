@@ -1,6 +1,5 @@
-const Comment = require("../models/Comment");
+const Comment = require("../models/Comment.model");
 
-// We don't use AppError & sendResponse in this controller.
 const {
   AppError,
   catchAsync,
@@ -19,7 +18,7 @@ commentsController.create = catchAsync(async (req, res) => {
   res.json(comment);
 });
 
-commentsController.read = async (req, res) => {
+commentsController.read = catchAsync(async (req, res) => {
   const comment = await Comment.findOne({ _id: req.params.id }).populate(
     "owner"
   );
@@ -28,9 +27,9 @@ commentsController.read = async (req, res) => {
   } else {
     res.json(comment);
   }
-};
+});
 
-commentsController.update = async (req, res) => {
+commentsController.update = catchAsync(async (req, res) => {
   await Comment.findByIdAndUpdate(
     { _id: req.params.id },
     { email: req.body.email },
@@ -44,9 +43,9 @@ commentsController.update = async (req, res) => {
       }
     }
   );
-};
+});
 
-commentsController.destroy = async (req, res) => {
+commentsController.destroy = catchAsync(async (req, res) => {
   await Comment.findByIdAndDelete(req.params.id, (err, comment) => {
     if (!comment) {
       res.status(404).json({ message: "Comment not found." });
@@ -54,9 +53,9 @@ commentsController.destroy = async (req, res) => {
       res.json(comment);
     }
   });
-};
+});
 
-commentsController.list = async (req, res) => {
+commentsController.list = catchAsync(async (req, res) => {
   await Comment.find({}, (err, comments) => {
     if (!comments) {
       res.status(404).json({ message: "Comments not found." });
@@ -64,6 +63,6 @@ commentsController.list = async (req, res) => {
       res.json(comments);
     }
   });
-};
+});
 
 module.exports = commentsController;
