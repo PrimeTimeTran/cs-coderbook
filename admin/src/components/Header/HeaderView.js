@@ -257,7 +257,7 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
             color="primary"
             href="https://github.com/primetimetran"
           >
-            PrimeTimeTran
+            loi@coderschool.vn
           </Typography>
         </div>
         <MenuItem

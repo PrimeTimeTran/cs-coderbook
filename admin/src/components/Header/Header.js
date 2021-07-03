@@ -305,7 +305,7 @@ export default function Header(props) {
               color="primary"
               href="https://github.com/primetimetran"
             >
-              Flalogic.com
+              loi@coderschool.vn
             </Typography>
           </div>
           <MenuItem
