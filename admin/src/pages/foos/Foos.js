@@ -39,14 +39,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Foos() {
+  console.log("Foos");
   const classes = useStyles();
   const [foos, setFoos] = useState(null);
 
   useEffect(() => {
     async function getFoos() {
-      const resp = await fetch("http://localhost:5000/api/posts");
+      const resp = await fetch("http://localhost:5000/api/foos");
       const json = await resp.json();
-      setFoos(json.data.foos);
+      const newFoos = json.data.foos
+      console.log(newFoos);
+      setFoos(newFoos);
     }
     getFoos();
   }, []);
@@ -59,7 +62,7 @@ export default function Foos() {
           <MUIDataTable
             title="Foos List"
             data={foos || datatableData}
-            columns={["Name", "Company", "City", "State", "Salary"]}
+            columns={["Id", "Name", "Company", "City", "Title", "Salary"]}
             options={{
               filterType: "checkbox",
             }}
