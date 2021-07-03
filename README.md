@@ -1,21 +1,29 @@
 # Coderbook
 
-## Objectives
+An example set of tech projects a startup might have using the following:
 
-An example full stack web application.
+HTML, CSS, JS, ES6, Bootstrap, Flex,
+
+NPM, Node.JS, React.JS, React Native, Netlify, Heroku
+
+
+
+## 
+
 
 - React
+- React Native
 - Node
 - Netlify
 - Heroku
 
-### Web/Admin > Server/API
+### Web/Admin/Mobile > Server/API
 
 The flow of data will be like the following when users are inserting data into our database.
 
 `Input > Handler > Submit Handler > Action > REST API > Request > Controller > Handler > Database`
 
-### Server/API > Web/Admin
+### Server/API > Web/Admin/Mobile
 
 The flow of data will be like the following when users are requesting data from our database.
 
