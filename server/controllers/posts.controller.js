@@ -19,27 +19,20 @@ postController.list = catchAsync(async (req, res) => {
     200,
     true,
     {
-      posts: [
-        {
-          id: 0,
-          body: "Foo",
-        },
-        {
-          id: 1,
-          body: "Bar",
-        },
-        {
-          id: 2,
-          body: "Fizz",
-        },
-        {
-          id: 3,
-          body: "Fuzz",
-        },
-        {
-          id: 4,
-          body: "Spam",
-        },
+      foos: [
+        ["Foo", "Apple", "Yonkers", "NY", 490_000],
+        ["Bar", "Facebook", "Hartford", "CT", 390_000],
+        ["Fizz", "Apple", "Hartford", "CT", 290_000],
+        ["Fuzz", "Google", "Tampa", "FL", 390_000],
+        ["Buzz", "Amazon", "Hartford", "CT", 190_000],
+        ["Spam", "Netflix", "Yonkers", "NY"],
+        ["Ham", "Airbnb", "Dallas", "TX"],
+        ["Eggs", "Uber", "Yonkers", "NY", 410_000],
+        ["Kegs", "Paypal", "Dallas", "TX", 350_000],
+        ["Legs", "Visa", "Yonkers", "NY"],
+        ["Alpha", "Google", "Tallahassee", "FL", 280_000],
+        ["Beta", "Apple", "Tampa", "FL", 300_000],
+        ["Charlie", "Facebook", "Jacksonville", "FL", 250_000],
       ],
     },
     null,
