@@ -20,7 +20,7 @@ const ComposerButton = ({ title, icon, widget }) => {
 };
 
 export default function Composer() {
-  const [imageUrl, setImageUrl] = useState('')
+  // const [imageUrl, setImageUrl] = useState('')
   const [images, setImages] = useState([])
 
   // const widget = window.cloudinary.createUploadWidget(
@@ -77,8 +77,6 @@ export default function Composer() {
         </Form>
       </Card.Body>
       <hr className="mt-0" />
-
-      <img src={imageUrl}/>
 
       <input type="file" onChange={onChangeImage} />
 
