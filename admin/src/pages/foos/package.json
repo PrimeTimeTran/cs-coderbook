@@ -1,6 +1,6 @@
 {
-  "name": "Posts",
+  "name": "Foos",
   "version": "0.0.0",
-  "main": "Posts.js",
+  "main": "Foos.js",
   "private": true
 }

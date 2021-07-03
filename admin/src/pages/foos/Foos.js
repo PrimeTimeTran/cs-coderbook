@@ -11,6 +11,7 @@ import Table from "../dashboard/components/Table/Table";
 // data
 import mock from "../dashboard/mock";
 
+
 const datatableData = [
   ["Joe James", "Example Inc.", "Yonkers", "NY"],
   ["John Walsh", "Example Inc.", "Hartford", "CT"],
@@ -37,27 +38,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Posts() {
+export default function Foos() {
   const classes = useStyles();
-  const [posts, setPosts] = useState(null);
+  const [foos, setFoos] = useState(null);
+
   useEffect(() => {
-    async function getPosts() {
+    async function getFoos() {
       const resp = await fetch("http://localhost:5000/api/posts");
       const json = await resp.json();
-      setPosts(json.data.foos);
+      setFoos(json.data.foos);
     }
-    getPosts();
+    getFoos();
   }, []);
 
-  console.log({ posts });
   return (
     <>
-      <PageTitle title="Posts" />
+      <PageTitle title="Foos" />
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <MUIDataTable
-            title="Posts List"
-            data={posts || datatableData}
+            title="Foos List"
+            data={foos || datatableData}
             columns={["Name", "Company", "City", "State", "Salary"]}
             options={{
               filterType: "checkbox",

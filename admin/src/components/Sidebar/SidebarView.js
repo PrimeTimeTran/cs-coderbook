@@ -14,7 +14,6 @@ import {
   LibraryBooks as LibraryIcon,
   HelpOutline as FAQIcon,
   ArrowBack as ArrowBackIcon,
-  Notes,
 } from "@material-ui/icons";
 import classNames from 'classnames';
 
@@ -30,7 +29,7 @@ const structure = [
     icon: <TypographyIcon />,
   },
   { id: 2, label: "Tables", link: "/app/tables", icon: <TableIcon /> },
-  { id: 3, label: "Posts", link: "/app/posts", icon: <Notes /> },
+  { id: 3, label: "Foos", link: "/app/foos", icon: <TableIcon /> },
   {
     id: 4,
     label: "Notifications",

@@ -7,7 +7,6 @@ import {
   FilterNone as UIElementsIcon,
   BorderAll as TableIcon,
   ArrowBack as ArrowBackIcon,
-  Notes
 } from "@material-ui/icons";
 import { useTheme } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
@@ -36,7 +35,7 @@ const structure = [
     icon: <TypographyIcon />,
   },
   { id: 2, label: "Tables", link: "/app/tables", icon: <TableIcon /> },
-  { id: 3, label: "Posts", link: "/app/posts", icon: <Notes /> },
+  { id: 3, label: "Foos", link: "/app/foos", icon: <TableIcon /> },
   {
     id: 4,
     label: "Notifications",
