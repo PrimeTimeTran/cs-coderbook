@@ -1,3 +1,4 @@
+// TODO REVIEW BACKEND #1 Every project we build we'll need to import and configure various libraries & tools.
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
@@ -15,6 +16,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 
+// TODO REVIEW BACKEND #2 We'll also need to configure our database using environment variables.
 const mongoose = require("mongoose");
 const MONGODB_URI = process.env.MONGODB_URI;
 
@@ -32,19 +34,12 @@ mongoose
     console.log({ e });
   });
 
-// TODO REVIEW BACKEND #1 Import a custom built middleware
+// TODO REVIEW BACKEND #3 Implement pagination.
 const { pagination } = require("./middlewares/pagination");
-  
 
-// TODO REVIEW BACKEND #2 Hide all our routes behind /api
-// http://localhost:5000/api/*
+// TODO REVIEW BACKEND #4 Silo code for maintainability. In this case our route & handler definitions behind => http://localhost:5000/api/*
 const indexRouter = require("./api/index");
 app.use("/api", pagination, indexRouter);
-
-// http://localhost:5000/foo
-// app.use("/foo", (req, res, next) => {
-//   res.send({ foo: "bar" });
-// });
 
 app.use((req, res, next) => {
   const err = new Error("Not Found");
@@ -54,7 +49,6 @@ app.use((req, res, next) => {
 
 const utilsHelper = require("./helpers/utils.helper");
 
-// Error handling
 app.use((err, req, res, next) => {
   console.log("ERROR", err);
   if (err.isOperational) {

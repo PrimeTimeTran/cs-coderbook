@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-// TODO REVIEW BACKEND #3 Here we route for all our resources.
+// TODO REVIEW BACKEND #5 Nest all the foo routes behind => http://localhost:5000/api/foos
 
 const foosRouter = require("./foos.api");
 router.use('/foos', foosRouter)

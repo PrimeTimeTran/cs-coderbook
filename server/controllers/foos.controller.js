@@ -1,4 +1,4 @@
-// TODO REVIEW BACKEND #4 Where the routing magic happens
+// TODO REVIEW BACKEND #6 And ultimately define the magic of our CRUD endpoints. They get complicated when accounting for all use cases.
 
 const Foo = require("../models/Foo.model");
 
