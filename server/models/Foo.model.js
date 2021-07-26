@@ -1,3 +1,6 @@
+// TODO REVIEW BACKEND #5 Where we define the properties of our resources.
+// Modeling our data here correctly can help us elsewhere tremendously.
+
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 

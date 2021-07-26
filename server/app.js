@@ -5,8 +5,6 @@ const logger = require("morgan");
 
 require("dotenv").config();
 const cors = require("cors");
-const mongoose = require("mongoose");
-const MONGODB_URI = process.env.MONGODB_URI;
 
 const app = express();
 
@@ -16,6 +14,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
+
+const mongoose = require("mongoose");
+const MONGODB_URI = process.env.MONGODB_URI;
 
 mongoose
   .connect(MONGODB_URI, {
@@ -31,14 +32,19 @@ mongoose
     console.log({ e });
   });
 
-// http://localhost:5000/api
+// TODO REVIEW BACKEND #1 Import a custom built middleware
+const { pagination } = require("./middlewares/pagination");
+  
+
+// TODO REVIEW BACKEND #2 Hide all our routes behind /api
+// http://localhost:5000/api/*
 const indexRouter = require("./api/index");
-app.use("/api", indexRouter);
+app.use("/api", pagination, indexRouter);
 
 // http://localhost:5000/foo
-app.use("/foo", (req, res, next) => {
-  res.send({ foo: "bar" });
-});
+// app.use("/foo", (req, res, next) => {
+//   res.send({ foo: "bar" });
+// });
 
 app.use((req, res, next) => {
   const err = new Error("Not Found");

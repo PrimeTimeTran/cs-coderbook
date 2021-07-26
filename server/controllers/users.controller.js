@@ -1,8 +1,3 @@
-
-// 1. Import model to CRUD
-// 2. Import helpers for administrative & REST control
-// 3. Define controller properties which map/point to "custom" CRUD handlers
-
 const bcrypt = require("bcryptjs");
 
 const User = require("../models/User.model");

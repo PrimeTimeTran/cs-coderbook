@@ -1,7 +1,24 @@
 const jwt = require("jsonwebtoken");
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 const { AppError } = require("../helpers/utils.helper");
+
 const authMiddleware = {};
+
+const magicians = ["Harry Potter", "Albus Dumbledore", "PrimeTimeTran"];
+
+function requireMagician(req, res, next) {
+  console.log({ hm: req.headers.authorization.split(" ") });
+  let isMagical = magicians.some((wizard) => {
+    return req.headers.authorization
+      .split(" ")
+      .some((magical) => wizard === magical);
+  });
+  if (isMagical) {
+    next();
+  } else {
+    throw Error("Not magical");
+  }
+}
 
 authMiddleware.loginRequired = (req, res, next) => {
   try {
